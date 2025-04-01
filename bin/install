@@ -26,7 +26,10 @@ function artifact_for() {
         extension=".exe"
     }
 
-    echo "${name}-v${version}-${os}-${arch}${extension}"
+    local version_prefix=""
+    [[ ! $version =~ ^v.* ]] && version_prefix="v"
+
+    echo "${name}-${version_prefix}${version}-${os}-${arch}${extension}"
 }
 
 function link_as() {
